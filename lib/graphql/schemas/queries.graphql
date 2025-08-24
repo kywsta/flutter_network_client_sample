@@ -1,0 +1,58 @@
+query GetAllFilms {
+  allFilms {
+    films {
+      id
+      title
+      director
+      releaseDate
+      episodeID
+      openingCrawl
+    }
+  }
+}
+
+query GetFilmById($id: ID!) {
+  film(id: $id) {
+    id
+    title
+    director
+    releaseDate
+    episodeID
+    openingCrawl
+    characterConnection {
+      characters {
+        name
+        birthYear
+        eyeColor
+        gender
+      }
+    }
+    planetConnection {
+      planets {
+        name
+        population
+        climates
+      }
+    }
+  }
+}
+
+query GetAllPeople($first: Int, $after: String) {
+  allPeople(first: $first, after: $after) {
+    edges {
+      node {
+        id
+        name
+        birthYear
+        eyeColor
+        gender
+        height
+        mass
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
