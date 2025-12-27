@@ -5,21 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "flutter_network_client_sample",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "flutter_network_client_sample (profile mode)",
+            "name": "Dio Sample",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "program": "lib/dio/main.dart"
         },
         {
-            "name": "flutter_network_client_sample (release mode)",
+            "name": "GraphQL Sample",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "program": "lib/graphql/main.dart"
+        },
+        {
+            "name": "Retrofit Sample",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/retrofit/main.dart"
         }
     ]
 }

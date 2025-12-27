@@ -310,11 +310,9 @@ extension ClientExtension$Query$GetAllFilms on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$GetAllFilms>> query$GetAllFilms([
     Options$Query$GetAllFilms? options,
   ]) async => await this.query(options ?? Options$Query$GetAllFilms());
-
   graphql.ObservableQuery<Query$GetAllFilms> watchQuery$GetAllFilms([
     WatchOptions$Query$GetAllFilms? options,
   ]) => this.watchQuery(options ?? WatchOptions$Query$GetAllFilms());
-  
   void writeQuery$GetAllFilms({
     required Query$GetAllFilms data,
     bool broadcast = true,
@@ -325,7 +323,6 @@ extension ClientExtension$Query$GetAllFilms on graphql.GraphQLClient {
     data: data.toJson(),
     broadcast: broadcast,
   );
-  
   Query$GetAllFilms? readQuery$GetAllFilms({bool optimistic = true}) {
     final result = this.readQuery(
       graphql.Request(
