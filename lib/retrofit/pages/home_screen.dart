@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final ProductRepository _productService = ProductRepository(
+  final ProductRepository _productRepository = ProductRepository(
     ProductRemoteDataSource(
       ProductApi(
         Dio(
@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     getNextPageKey: (state) =>
         state.lastPageIsEmpty ? null : state.nextIntPageKey,
     fetchPage: (pageKey) {
-      return _productService.getProducts(10, pageKey);
+      return _productRepository.getProducts(10, pageKey);
     },
   );
 
