@@ -1,9 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_network_client_sample/retrofit/apis/product/product_api.dart';
-import 'package:flutter_network_client_sample/retrofit/apis/product/product_remote_data_source.dart';
 import 'package:flutter_network_client_sample/retrofit/apis/product/product_repository.dart';
-import 'package:flutter_network_client_sample/retrofit/default_parser_error_logger.dart';
+import 'package:flutter_network_client_sample/shared/service_locator.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,28 +11,14 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  final ProductRepository _productRepository = ProductRepository(
-    ProductRemoteDataSource(
-      ProductApi(
-        Dio(
-          BaseOptions(
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-            },
-          ),
-        ),
-        errorLogger: DefaultParserErrorLogger(),
-      ),
-    ),
-  );
+const int pageSize = 10;
 
+class _HomeScreenState extends State<HomeScreen> {
   late final _paginController = PagingController<int, Product>(
     getNextPageKey: (state) =>
         state.lastPageIsEmpty ? null : state.nextIntPageKey,
     fetchPage: (pageKey) {
-      return _productRepository.getProducts(10, pageKey);
+      return serviceLocator<ProductRepository>().getProducts(pageSize, pageSize * pageKey);
     },
   );
 
@@ -60,7 +44,18 @@ class _HomeScreenState extends State<HomeScreen> {
           fetchNextPage: fetchNextPage,
           builderDelegate: PagedChildBuilderDelegate<Product>(
             itemBuilder: (context, item, index) {
-              return ListTile(title: Text(item.title));
+              return Card(
+                child: Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(item.thumbnail),
+                    ),
+                    Text(item.title),
+                    Text(item.description),
+                  ],
+                ),
+              );
             },
           ),
         );

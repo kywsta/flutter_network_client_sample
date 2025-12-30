@@ -1,13 +1,23 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_network_client_sample/retrofit/constants/network_constants.dart';
 import 'package:flutter_network_client_sample/retrofit/utils/retrofit_api_call_adapter.dart';
+import 'package:flutter_network_client_sample/shared/auth_session.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:flutter/foundation.dart';
 
 part 'product_api.freezed.dart';
 part 'product_api.g.dart';
+
+@immutable
+class TestAnnotation {
+  final String annotatedValue;
+
+  const TestAnnotation({required this.annotatedValue});
+}
 
 @RestApi(
   baseUrl: NetworkConstants.baseUrl,
@@ -23,8 +33,8 @@ abstract class ProductApi {
 
   @GET(NetworkConstants.products)
   Future<Either<ProductListResponse, Exception>> getProducts(
-    @Path('limit') int limit,
-    @Path('skip') int skip,
+    @Query('limit') int limit,
+    @Query('skip') int skip,
   );
 }
 
