@@ -310,9 +310,11 @@ extension ClientExtension$Query$GetAllFilms on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$GetAllFilms>> query$GetAllFilms([
     Options$Query$GetAllFilms? options,
   ]) async => await this.query(options ?? Options$Query$GetAllFilms());
+
   graphql.ObservableQuery<Query$GetAllFilms> watchQuery$GetAllFilms([
     WatchOptions$Query$GetAllFilms? options,
   ]) => this.watchQuery(options ?? WatchOptions$Query$GetAllFilms());
+
   void writeQuery$GetAllFilms({
     required Query$GetAllFilms data,
     bool broadcast = true,
@@ -323,6 +325,7 @@ extension ClientExtension$Query$GetAllFilms on graphql.GraphQLClient {
     data: data.toJson(),
     broadcast: broadcast,
   );
+
   Query$GetAllFilms? readQuery$GetAllFilms({bool optimistic = true}) {
     final result = this.readQuery(
       graphql.Request(
@@ -1227,9 +1230,11 @@ extension ClientExtension$Query$GetFilmById on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$GetFilmById>> query$GetFilmById(
     Options$Query$GetFilmById options,
   ) async => await this.query(options);
+
   graphql.ObservableQuery<Query$GetFilmById> watchQuery$GetFilmById(
     WatchOptions$Query$GetFilmById options,
   ) => this.watchQuery(options);
+
   void writeQuery$GetFilmById({
     required Query$GetFilmById data,
     required Variables$Query$GetFilmById variables,
@@ -1242,6 +1247,7 @@ extension ClientExtension$Query$GetFilmById on graphql.GraphQLClient {
     data: data.toJson(),
     broadcast: broadcast,
   );
+
   Query$GetFilmById? readQuery$GetFilmById({
     required Variables$Query$GetFilmById variables,
     bool optimistic = true,
@@ -2813,9 +2819,11 @@ extension ClientExtension$Query$GetAllPeople on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$GetAllPeople>> query$GetAllPeople([
     Options$Query$GetAllPeople? options,
   ]) async => await this.query(options ?? Options$Query$GetAllPeople());
+
   graphql.ObservableQuery<Query$GetAllPeople> watchQuery$GetAllPeople([
     WatchOptions$Query$GetAllPeople? options,
   ]) => this.watchQuery(options ?? WatchOptions$Query$GetAllPeople());
+
   void writeQuery$GetAllPeople({
     required Query$GetAllPeople data,
     Variables$Query$GetAllPeople? variables,
@@ -2828,6 +2836,7 @@ extension ClientExtension$Query$GetAllPeople on graphql.GraphQLClient {
     data: data.toJson(),
     broadcast: broadcast,
   );
+
   Query$GetAllPeople? readQuery$GetAllPeople({
     Variables$Query$GetAllPeople? variables,
     bool optimistic = true,

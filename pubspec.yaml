@@ -14,7 +14,7 @@ dependencies:
   json_annotation: ^4.9.0
   graphql: ^5.2.1
   graphql_flutter: ^5.2.0
-  retrofit: ^4.9.1
+  retrofit: 4.9.1
   logger: ^2.6.2
   freezed_annotation: ^3.1.0
   infinite_scroll_pagination: ^5.1.1
